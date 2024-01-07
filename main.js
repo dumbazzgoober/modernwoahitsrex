@@ -713,15 +713,13 @@ function prepareArea(facing) {
     switch(facing) {
         case "a":
             for (let r = curY - constraints[1]; r < curY + 50; r++) {
-                if (mine[r] === undefined) {
+                if (mine[r] === undefined)
                     mine[r] = [];
-                }
                 if (mine[r][curX - constraints[0]] === undefined) {
-                    if (r === 0) {
+                    if (r === 0)
                         mine[r][curX - constraints[0]] = "🟩";
-                    } else {
+                    else
                         mine[r][curX - constraints[0]] = "⬜";
-                    }
                 }
             }
             break;
@@ -729,22 +727,19 @@ function prepareArea(facing) {
             if (mine[curY + 50] === undefined)
                 mine[curY + 50] = [];
             for (let c = curX - constraints[0]; c < curX + 50; c++) {
-                if (mine[curY + 50][c] === undefined) {
+                if (mine[curY + 50][c] === undefined)
                     mine[curY + 50][c] = "⬜"
-                }
             }
             break;
         case "d":
             for (let r = curY - constraints[1]; r < curY + 50; r++) {
-                if (mine[r] === undefined) {
+                if (mine[r] === undefined)
                     mine[r] = [];
-                }
                 if (mine[r][curX + 50] === undefined) {
-                    if (r === 0) {
+                    if (r === 0)
                         mine[r][curX + 50] = "🟩";
-                    } else {
+                    else
                         mine[r][curX + 50] = "⬜";
-                    }
                 }
             }
             break;
@@ -1257,12 +1252,10 @@ function mineResetAid() {
         let x = 1000000000;
         let y = curY;
         for (let r = y - 50; r < y + 50; r++) {
-            if(mine[r] === undefined) {
+            if(mine[r] === undefined)
                 mine[r] = [];
-            }
-            for (let c = x - 50; c < x + 50; c++) {
+            for (let c = x - 50; c < x + 50; c++)
                 mine[r][c] = "⬜";
-            }
         }
         checkAllAround(curX, curY, 1);
     }, 125);
@@ -1379,11 +1372,10 @@ function toggleMusic() {
 function changeCanPlay(num, button) {
     let text = button.innerHTML;
     text = text.substring(text.indexOf(" "));
-    if (canPlay[num]) {
+    if (canPlay[num])
         button.innerHTML = "Unmute" + text;
-    } else {
+    else
         button.innerHTML = "Mute" + text;
-    }
     canPlay[num] = !(canPlay[num]);
 }
 
