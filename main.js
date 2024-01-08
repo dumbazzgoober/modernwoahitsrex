@@ -1351,7 +1351,6 @@ function toLocation() {
     });
 }
 
-
 let distanceMulti = 1;
 function switchDistance() {
     let y = document.getElementById("meterDisplay").innerHTML;
