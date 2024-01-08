@@ -1,3 +1,5 @@
+const debug = window.location.href.match(/^http:\/\/127\.0\.0\.1:\d{4}/g) !== null;
+let debugLuck = 5;
 class secureLogs {
     #spawnLogs;
     #verifiedLogs;
@@ -875,6 +877,7 @@ function giveBlock(type, x, y, fromReset) {
 }
 
 function generateBlock(luck, location) {
+    if (debug) luck = typeof debugLuck === "number" ? debugLuck : luck;
     let hasLog = false;
     let probabilityTable = currentLayer;
     let blockToGive = "";
@@ -1126,7 +1129,7 @@ let latestSpawns = [];
 function spawnMessage(block, location) {
     if (!(gears[3]) && blocksRevealedThisReset > mineCapacity - 5000)
         mineCapacity += 5000;
-    let output = "";
+    let output = ["",""];
     let addToLatest = true;
     if (currentPickaxe === 5)
         latestSpawns.push([block, location[1], location[0]]);
@@ -1149,14 +1152,17 @@ function spawnMessage(block, location) {
         latestSpawns.splice(0, 1);
     if (addToLatest) {
         for (let i = latestSpawns.length - 1; i >= 0; i--) {
-            output += "<span class='emoji>" + latestSpawns[i][0] + "</span> 1/" + (Math.round(1 / (oreList[latestSpawns[i][0]][0]))).toLocaleString();
+            output[0] += "<span class='emoji>" + latestSpawns[i][0] + "</span> 1/" + (Math.round(1 / (oreList[latestSpawns[i][0]][0]))).toLocaleString();
             if (latestSpawns[i][1] !== undefined)
-                output += " | X: " + (latestSpawns[i][1] - 1000000000) + ", Y: " + -(latestSpawns[i][2]) + "<br>";
+                output[0] += " | X: " + (latestSpawns[i][1] - 1000000000) + ", Y: " + -(latestSpawns[i][2]) + "<br>";
             else
-                output += "<br>";
+                output[0] += "<br>";
         }
-        document.getElementById("latestSpawns").innerHTML = output;
-        document.getElementById("spawnMessage").innerHTML = "<span class='emoji>" + block + "</span>" + " Has Spawned!<br>" + "1/" + (Math.round(1 / (oreList[block][0]))).toLocaleString() + (currentPickaxe === 5 || gears[0]?"<br>X: " + (location[1] - 1000000000) + "<br>Y: " + -(location[0]):"");
+        document.getElementById("latestSpawns").innerHTML = output[0];
+        output[1] += "<span class='emoji>" + block + "</span>" + " Has Spawned!<br>" + "1/" + (Math.round(1 / (oreList[block][0]))).toLocaleString();
+        if (currentPickaxe === 5 || gears[0])
+            output[1] += "<br>X: " + (location[1] - 1000000000) + "<br>Y: " + -(location[0]);
+        document.getElementById("spawnMessage").innerHTML = output[1];
     }
     clearTimeout(spawnOre);
     spawnOre = setTimeout(() => {
@@ -1286,7 +1292,7 @@ function logFind(type, x, y, variant, atMined, fromReset) {
     latestFinds.push([type, x, y, variant, atMined, fromReset]);
     if (latestFinds.length > 10)
         latestFinds.splice(0, 1);
-    for (let i = latestFinds.length - 1; i >= 0; i--) {
+    for (let i = latestFinds.length - 1; i >= 0; i--)
         if (latestFinds[i][3] !== "Normal")
             output += latestFinds[i][3];
         output += latestFinds[i][0] + " | X: " + (latestFinds[i][1] - 1000000000) + ", Y: " + -(latestFinds[i][2]);

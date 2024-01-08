@@ -52,6 +52,7 @@ p {
 .craftingAmountsDisplay {
   font-size: 1vw;
 }
+
 #displayRecipe > div > p {
   margin-bottom: 0.1rem;
 }
@@ -138,7 +139,7 @@ body {
 #blockDisplay {
   padding: 0.5em;
   margin: 0;
-  /*line-height: 1.8vw;*/
+  line-height: 2.2vw;
   font-size: 1.8vw;
   user-select: none;
   text-wrap: nowrap;
