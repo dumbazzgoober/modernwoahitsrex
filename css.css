@@ -20,12 +20,16 @@
   display: none;
 }
 
+p {
+  color: white;
+}
+
 #inventoryDisplay {
+  border-color: #313131;
   overflow-y: scroll;
   min-height: 75vh;
   max-height: 75vh;
   border-style: solid;
-  border-color: rgb(49, 49, 49);
   border-left: none;
   border-right: none;
   margin-top: 0.35em;
@@ -108,9 +112,9 @@
 
 body {
   overscroll-behavior: none;
-  background-color: black;
   max-height: 100%;
   font-family: 'Courier';
+  background-color: black;
 }
 
 .row {
@@ -145,10 +149,6 @@ body {
   font-size: 30px;
 }
 
-p {
-  color: white;
-}
-
 .mobile {
   padding-bottom: 0.25em;
   display: block;
@@ -173,14 +173,14 @@ p {
 
 button, .col-3 > div > button {
   font-size: 1vw;
-  background-color: #494949;
   border-style: solid;
-  border-color: white;
   border-width: 1px;
   border-radius: 2px;
-  color: white;
   font-family: 'Arial';
   text-align: center;
+  background-color: #494949;
+  border-color: white;
+  color: white;
 }
 
 #musicButton {
@@ -298,3 +298,37 @@ button, .col-3 > div > button {
   text-align: center;
   text-wrap: wrap;
 }
+
+@media (prefers-color-scheme: light) {
+  body {
+    background-color: white;
+  }
+  button, .col-3 > div > button {
+    background-color: #eeeeee;
+    border-color: black;
+    color: black;
+  }
+  p {
+    color: black;
+  }
+  #inventoryDisplay {
+    border-color: #afafaf;
+  }
+}
+
+/*@media (prefers-color-scheme: dark) {
+  body {
+    background-color: black;
+  }
+  button, .col-3 > div > button {
+    background-color: #494949;
+    border-color: white;
+    color: white;
+  }
+  p {
+    color: white;
+  }
+  #inventoryDisplay {
+    border-color: #313131;
+  }
+}*/

@@ -80,7 +80,7 @@ let blocksRevealedThisReset = 0;
 let mineCapacity = 40000; // in case this ever needs to be raised
 let canMine = false;
 let lastDirection = "";
-const pickaxes = [
+let pickaxes = [
     ["is anyone gonna read these lol", true],
     ["hi!!! hii!!", false],
     ["wait no get out of here", false],
@@ -554,7 +554,18 @@ fluteLayer = {
     "🪈": 1/1
 },
 
-allLayers = [dirtLayer, brickLayer, foggyLayer, waterLayer, rockLayer, radioactiveLayer, cactusLayer, paperLayer, sillyLayer, fluteLayer];
+allLayers = [
+    dirtLayer,
+    brickLayer,
+    foggyLayer,
+    waterLayer,
+    rockLayer,
+    radioactiveLayer,
+    cactusLayer,
+    paperLayer,
+    sillyLayer, 
+    fluteLayer
+];
 
 function init() {
     let canContinue = false;
@@ -630,8 +641,8 @@ function movePlayer(dir) {
                 mine[curY][curX] = "⛏️";
                 lastDirection = "s";
                 break;
-            default:
-                console.log("wrong key!!");
+            /*default:
+                console.log("wrong key!!");*/
         }
         displayArea();
     }
@@ -1276,11 +1287,13 @@ function logFind(type, x, y, variant, atMined, fromReset) {
     if (latestFinds.length > 10)
         latestFinds.splice(0, 1);
     for (let i = latestFinds.length - 1; i >= 0; i--) {
-        output += latestFinds[i][3] + " ";
+        if (latestFinds[i][3] !== "Normal")
+            output += latestFinds[i][3];
+        output += latestFinds[i][0] + " | X: " + (latestFinds[i][1] - 1000000000) + ", Y: " + -(latestFinds[i][2]);
         if (latestFinds[i][5])
-            output += latestFinds[i][0] + " | X: " + (latestFinds[i][1] - 1000000000) + ", Y: " + -(latestFinds[i][2]) + " | FROM RESET<br>"
+            output += " | FROM RESET<br>";
         else
-            output += latestFinds[i][0] + " | X: " + (latestFinds[i][1] - 1000000000) + ", Y: " + -(latestFinds[i][2]) + " | At " + latestFinds[i][4].toLocaleString() +  " Mined.<br>";
+            output += " | At " + latestFinds[i][4].toLocaleString() + " Mined.<br>";
     }
     document.getElementById("latestFinds").innerHTML = output;
     //twemoji.parse(document.getElementById("latestFinds"));
