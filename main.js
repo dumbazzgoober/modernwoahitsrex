@@ -1290,11 +1290,6 @@ function logFind(type, x, y, variant, atMined, fromReset) {
         if (latestFinds[i][3] !== "Normal")
             output += latestFinds[i][3];
         output += latestFinds[i][0] + " | X: " + (latestFinds[i][1] - 1000000000) + ", Y: " + -(latestFinds[i][2]);
-        if (latestFinds[i][5])
-            output += " | FROM RESET<br>";
-        else
-            output += " | At " + latestFinds[i][4].toLocaleString() + " Mined.<br>";
-    }
     document.getElementById("latestFinds").innerHTML = output;
     //twemoji.parse(document.getElementById("latestFinds"));
 }
