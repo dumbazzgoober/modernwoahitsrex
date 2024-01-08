@@ -542,7 +542,6 @@ paperLayer = {
 },
 
 sillyLayer = {
-    "🧌": 1/696969696969,
     "💅": 1/11201200200,
     "✈️": 1/9110000000,
     "🪢": 1/8181818181,
@@ -754,17 +753,18 @@ function prepareArea(facing) {
 }
 
 function displayArea() {
-    let output ="";
+    let output = "";
     let constraints = getParams(9, 9);
     for (let r = curY - constraints[1]; r <= curY + 9 + (9-constraints[1]); r++) {
         for (let c = curX - constraints[0]; c <= curX + 9 + (9-constraints[0]); c++)
-            output += mine[r][c];
+            output += "<span class='emoji'>" + mine[r][c] + "</span>";
         output += "<br>";
     }
     document.getElementById("blockDisplay").innerHTML = output;
     document.getElementById("mineResetProgress").innerHTML = blocksRevealedThisReset + "/" + mineCapacity + " Blocks Revealed This Reset";
     document.getElementById("blocksMined").innerHTML = totalMined.toLocaleString() + " Blocks Mined";
     document.getElementById("location").innerHTML = "X: " + (curX - 1000000000) + " | Y: " + (-curY);
+    //twemoji.parse(document.getElementById("blockDisplay"));
 }
 
 function getParams(distanceX, distanceY, x, y) {
@@ -1066,10 +1066,14 @@ function createInventory() {
             tempElement.id = (propertyName + i);
             tempElement.classList = "oreDisplay";
             tempElement.style.display = "none";
-            tempElement.innerHTML = propertyName + " | 1/" + ((Math.round( 1 / oreList[propertyName][0])).toLocaleString() * multis[i - 1]).toLocaleString() + " | x" + oreList[propertyName][1][i - 1];
+            tempElement.innerHTML = "<span class='emoji>" + propertyName + "</span> | 1/" + ((Math.round( 1 / oreList[propertyName][0])).toLocaleString() * multis[i - 1]).toLocaleString() + " | x" + oreList[propertyName][1][i - 1];
             document.getElementById(("inventory") + i).appendChild(tempElement);
+            //twemoji.parse(document.getElementById(propertyName+i));
         }
     }
+    /*for (let i = 1; i < 5; i++) {
+        twemoji.parse(document.getElementById("inventory"+i));
+    }*/
 }
 
 function createIndex() {
@@ -1134,19 +1138,20 @@ function spawnMessage(block, location) {
         latestSpawns.splice(0, 1);
     if (addToLatest) {
         for (let i = latestSpawns.length - 1; i >= 0; i--) {
-            output += latestSpawns[i][0] + " 1/" + (Math.round(1 / (oreList[latestSpawns[i][0]][0]))).toLocaleString();
+            output += "<span class='emoji>" + latestSpawns[i][0] + "</span> 1/" + (Math.round(1 / (oreList[latestSpawns[i][0]][0]))).toLocaleString();
             if (latestSpawns[i][1] !== undefined)
                 output += " | X: " + (latestSpawns[i][1] - 1000000000) + ", Y: " + -(latestSpawns[i][2]) + "<br>";
             else
                 output += "<br>";
         }
         document.getElementById("latestSpawns").innerHTML = output;
-        document.getElementById("spawnMessage").innerHTML = block + " Has Spawned!<br>" + "1/" + (Math.round(1 / (oreList[block][0]))).toLocaleString() + (currentPickaxe === 5 || gears[0]?"<br>X: " + (location[1] - 1000000000) + "<br>Y: " + -(location[0]):"");
+        document.getElementById("spawnMessage").innerHTML = "<span class='emoji>" + block + "</span>" + " Has Spawned!<br>" + "1/" + (Math.round(1 / (oreList[block][0]))).toLocaleString() + (currentPickaxe === 5 || gears[0]?"<br>X: " + (location[1] - 1000000000) + "<br>Y: " + -(location[0]):"");
     }
     clearTimeout(spawnOre);
     spawnOre = setTimeout(() => {
         document.getElementById("spawnMessage").innerHTML = "Spawn Messages Appear Here!"
     }, 20000);
+    //twemoji.parse(document.getElementById("spawnMessage"));
 }
 
 function moveOne(dir, button) {
@@ -1279,6 +1284,7 @@ function logFind(type, x, y, variant, atMined, fromReset) {
             output += latestFinds[i][0] + " | X: " + (latestFinds[i][1] - 1000000000) + ", Y: " + -(latestFinds[i][2]) + " | At " + latestFinds[i][4].toLocaleString() +  " Mined.<br>";
     }
     document.getElementById("latestFinds").innerHTML = output;
+    //twemoji.parse(document.getElementById("latestFinds"));
 }
 
 let lastLayerChange = 6000;
