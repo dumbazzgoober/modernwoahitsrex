@@ -94,7 +94,6 @@ function loadContent() {
     for (let i = 0; i < allAudios.length; i++)
         allAudios[i].load();
     document.getElementById("pressPlay").style.display = "none";
-    document.getElementById("mainContent").style.display = "block";
     canMine = true;
     init();
 }

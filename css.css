@@ -1,15 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Color+Emoji&display=swap');
 
-.emoji {
-  font-family: "Noto Color Emoji", sans-serif!important; 
+*,*::before,*::after{
+  image-rendering: pixelated;
+   box-sizing: border-box;
+  font-family: "Arial","Noto Color Emoji", sans-serif; 
 }
-
-#mainContent {
-  display: none;
+html,body{
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;                                  
+}
+body{
+  display: flex;
+  align-items: center;
+  flex-flow: row;
+  justify-content: stretch;
+}
+.emoji {
 }
 
 #inventoryDisplay {
-  overflow-y: scroll;
   min-height: 75vh;
   max-height: 75vh;
   border-style: solid;
@@ -116,14 +127,11 @@ body {
   text-align: center;
 }
 
-.row > div {
-  overflow-y: scroll;
-}
-
 #blockDisplay {
   padding: 0.5em;
   margin: 0;
   line-height: 1.8vw;
+  letter-spacing: -0.173em;
   font-size: 1.8vw;
   user-select: none;
   text-wrap: nowrap;
@@ -185,27 +193,10 @@ button, .col-3 > div > button {
   width: 100%;
 }
 
-.col-7 {
-  height: 100vh;
-  max-height: 100vh;
-  width: 50%;
-}
-
-.col-2 {
-  width: 25%;
-  height: 100vh;
-  max-height: 100vh;
-  /*overflow-x: none;*/
-  border-style: solid;
-  border-color: rgb(49, 49, 49);
-  border-top: 0;
-  border-bottom: 0;
-}
-
-.col-3 {
-  width: 25%;
+.col {
   height: 100%;
-  max-height: 100vh;
+  max-height: 100%;
+  width: 50%;
 }
 
 #musicStuff > label {
@@ -224,21 +215,18 @@ button, .col-3 > div > button {
   align-items: center;
   text-decoration: none;
   /*border: 2px dashed;*/
+  & > img {
+    width: 3em;
+    height: 3em;
+    aspect-ratio: 1;
+  }
+  & > p {
+    width: 100%;
+    font-size: 100%;
+    margin: 0;
+    text-wrap: nowrap;
+  }
 }
-
-#discord > img {
-  width: 3em;
-  height: 3em;
-  aspect-ratio: 1;
-}
-
-#discord > p {
-  width: 100%;
-  font-size: 100%;
-  margin: 0;
-  text-wrap: nowrap;
-}
-
 /*.col-3 > p:first-of-type {
   margin-bottom: 0.5rem;
 }*/
@@ -249,7 +237,6 @@ button, .col-3 > div > button {
 
 #latestSpawns, #latestFinds {
   height: 100%;
-  overflow-y: scroll;
   font-size: 0.8vw;
 }
 
@@ -269,9 +256,6 @@ button, .col-3 > div > button {
   display: none;
 }*/
 
-.container-fluid {
-  height: 100%;
-}
 #masterVolume {
   text-align: center;
   border-style: solid;
