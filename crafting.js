@@ -75,7 +75,7 @@ const recipes = {
     },
     "pickaxe12" : {
         name : "Wings of Glory",
-        recipe : [{ore:"🧱", amt:150000000},{ore:"🪨", amt:150000000},{ore:"🌫️", amt:150000000},{ore:"🔵", amt:8000000},{ore:"🟠", amt:4000000},{ore:"⚫", amt:1230000},{ore:"🧧", amt:390000},{ore:"🟦", amt:22900},{ore:"🔺", amt:1900},{ore:"💚", amt:1500},{ore:"🤍", amt:750},{ore:"🧵", amt:70},{ore:"❄️", amt:40},{ore:"🥉", amt:35},{ore:"🧊", amt:25},{ore:"💸", amt:20},{ore:"👁️", amt:7},{ore:"🌈", amt:5},{ore:"🌇", amt:3}],
+        recipe : [{ore:"🧱", amt:0},{ore:"🪨", amt:0},{ore:"🌫️", amt:0},{ore:"🔵", amt:0},{ore:"🟠", amt:0},{ore:"⚫", amt:0},{ore:"🧧", amt:0},{ore:"🟦", amt:0},{ore:"🔺", amt:0},{ore:"💚", amt:0},{ore:"🤍", amt:0},{ore:"🧵", amt:0},{ore:"❄️", amt:0},{ore:"🥉", amt:0},{ore:"🧊", amt:0},{ore:"💸", amt:0},{ore:"👁️", amt:0},{ore:"🌈", amt:0},{ore:"🌇", amt:0}],
         upgrades : {},
     },
     "pickaxe13" : {
@@ -155,7 +155,7 @@ const recipes = {
     },
     "pickaxe31" : {
         name: "Undersea Eviscerator",
-        recipe : [{ore:"🌊", amt:500000000000},{ore:"⛵", amt:352000000},{ore:"🎣", amt:340000000},{ore:"🤿", amt:323200000},{ore:"🫧", amt:320000000},{ore:"🐟", amt:107200000},{ore:"👑", amt:42400000},{ore:"🔱", amt:40000000},{ore:"🌀", amt:4480000},{ore:"👿", amt:3720000},{ore:"🪩", amt:2800000},{ore:"💫", amt:1400000},{ore:"🐋", amt:348000},{ore:"⚓", amt:3680},{ore:"🪸", amt:1000},{ore:"HD 160529", amt:1}],
+        recipe : [{ore:"🌊", amt:0},{ore:"⛵", amt:0},{ore:"🎣", amt:0},{ore:"🤿", amt:0},{ore:"🫧", amt:0},{ore:"🐟", amt:0},{ore:"👑", amt:0},{ore:"🔱", amt:0},{ore:"🌀", amt:0},{ore:"👿", amt:0},{ore:"🪩", amt:0},{ore:"💫", amt:0},{ore:"🐋", amt:0},{ore:"⚓", amt:0},{ore:"🪸", amt:0},{ore:"HD 160529", amt:0}],
         upgrades : {}
     },
     "gear0" : {
